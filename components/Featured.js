@@ -14,7 +14,7 @@ const Bg = styled.div`
 const Title = styled.h1`
   margin:0;
   font-weight:normal;
-  font-size:1.5rem;
+  font-size:.5rem;
   @media screen and (min-width: 768px) {
     font-size:3rem;
   }
@@ -79,7 +79,7 @@ export default function Featured({product}) {
             </div>
           </Column>
           <Column>
-            <img src="https://dawid-next-ecommerce.s3.amazonaws.com/1679151719649.png" alt="Hello"/>
+            <img src="https://res.cloudinary.com/dyunqrxki/image/upload/v1705343039/Ecommerce_Panel/bssid55ljiexfmotctkx.png" alt="Hello"/>
           </Column>
         </ColumnsWrapper>
       </Center>
