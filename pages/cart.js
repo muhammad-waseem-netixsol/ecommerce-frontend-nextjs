@@ -76,6 +76,7 @@ export default function CartPage() {
   const [streetAddress,setStreetAddress] = useState('');
   const [country,setCountry] = useState('');
   const [isSuccess,setIsSuccess] = useState(false);
+  // useeffect
   useEffect(() => {
     if (cartProducts.length > 0) {
       axios.post('/api/cart', {ids:cartProducts})
@@ -86,6 +87,7 @@ export default function CartPage() {
       setProducts([]);
     }
   }, [cartProducts]);
+// useeffect
   useEffect(() => {
     if (typeof window === 'undefined') {
       return;
@@ -102,13 +104,18 @@ export default function CartPage() {
     removeProduct(id);
   }
   async function goToPayment() {
-    const response = await axios.post('/api/checkout', {
-      name,email,city,postalCode,streetAddress,country,
-      cartProducts,
-    });
-    if (response.data.url) {
-      window.location = response.data.url;
+    try{
+      const response = await axios.post('/api/checkout', {
+        name,email,city,postalCode,streetAddress,country,
+        cartProducts,
+      });
+      if (response.data.url) {
+        window.location = response.data.url;
+      }
+    }catch(err){
+      alert("something went wrong")
     }
+    
   }
   let total = 0;
   for (const productId of cartProducts) {
@@ -117,6 +124,8 @@ export default function CartPage() {
   }
 
   if (isSuccess) {
+   
+
     return (
       <>
         <Header />
